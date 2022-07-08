@@ -4,13 +4,32 @@ import { format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { formatDistanceToNow } from "date-fns/esm";
 
-import { Comment } from "../Comment";
+import { Comment, CommentInterface } from "../Comment";
 import { Avatar } from "../Avatar";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-export function Post({ author, content, publishedAt }) {
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+interface ContentPost {
+  type: string;
+  text: string;
+  link?: string;
+}
+
+export interface AuthorInterface {
+  avatarUrl: string;
+  name: string;
+  role?: string;
+}
+
+interface PostProps {
+  id?: string;
+  author: AuthorInterface;
+  content: ContentPost[];
+  publishedAt: Date;
+}
+
+export function Post({ author, content, publishedAt }: PostProps) {
+  const [comments, setComments] = useState<CommentInterface[]>([]);
+  const [newComment, setNewComment] = useState<string>("");
 
   const publishedDateTitle = format(publishedAt, "dd 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
@@ -20,8 +39,7 @@ export function Post({ author, content, publishedAt }) {
     addSuffix: true,
   });
 
-
-  function renderContent(line, index) {
+  function renderContent(line: ContentPost, index: number) {
     if (line.type === "p") return <p key={index}>{line.text}</p>;
     if (line.type === "a")
       return (
@@ -34,13 +52,13 @@ export function Post({ author, content, publishedAt }) {
       );
   }
 
-  function handleSendComment() {
-    event.preventDefault();
+  function handleSendComment(e: FormEvent<EventTarget>) {
+    e.preventDefault();
     const contentNewCommentary = {
-      id: parseInt(Math.random() * Math.random() * 10000 * 999584808),
+      id: String(Math.random() * Math.random() * 10000 * 999584808),
       author: {
         name: "João Conte",
-        image: "https://github.com/lejoaoconte.png",
+        avatarUrl: "https://github.com/lejoaoconte.png",
       },
       text: newComment,
       time: new Date("2022-07-08 15:03:00"),
@@ -49,20 +67,20 @@ export function Post({ author, content, publishedAt }) {
     setNewComment("");
   }
 
-  function handleNewComment() {
-    setNewComment(event.target.value);
-    event.target.setCustomValidity("");
+  function handleNewComment(e: ChangeEvent<HTMLTextAreaElement>) {
+    setNewComment(e.target.value);
+    e.target.setCustomValidity("");
   }
 
-  function deleteComment(commentId) {
+  function deleteComment(commentId: string) {
     const commentListWithoutOne = comments.filter(
       (comment) => comment.id !== commentId
     );
     setComments(commentListWithoutOne);
   }
 
-  function handleNewCommentInvalid() {
-    event.target.setCustomValidity("Digite algum comentário");
+  function handleNewCommentInvalid(e: ChangeEvent<HTMLTextAreaElement>) {
+    e.target.setCustomValidity("Digite algum comentário");
   }
 
   return (

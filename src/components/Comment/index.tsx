@@ -8,10 +8,23 @@ import { FaTrash, FaHandPeace } from "react-icons/fa";
 
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { AuthorInterface } from "../Post";
 
-export function Comment({ content, onDeleteComment }) {
+export interface CommentInterface {
+  id: string;
+  author: AuthorInterface;
+  text: string;
+  time: Date;
+}
+
+interface CommentProps {
+  content: CommentInterface;
+  onDeleteComment: (value: string) => void;
+}
+
+export function Comment({ content, onDeleteComment }: CommentProps) {
   const { id, time, author, text } = content;
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState<number>(0);
 
   const publishedDateTitle = format(time, "dd 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
@@ -31,7 +44,7 @@ export function Comment({ content, onDeleteComment }) {
 
   return (
     <div className={styles.comment}>
-      <Avatar hasBorder={false} src={author.image} />
+      <Avatar hasBorder={false} src={author.avatarUrl} />
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>
           <header>
