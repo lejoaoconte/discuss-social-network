@@ -3,12 +3,12 @@ import { useState } from "react";
 import styles from "./Comment.module.css";
 
 import { Avatar } from "../Avatar";
+import { AuthorInterface } from "../Post";
 
 import { FaTrash, FaHandPeace } from "react-icons/fa";
 
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { AuthorInterface } from "../Post";
 
 export interface CommentInterface {
   id: string;

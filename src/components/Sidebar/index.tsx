@@ -1,6 +1,7 @@
 import styles from "./Sidebar.module.css";
 
 import { FaPencilAlt } from "react-icons/fa";
+
 import { Avatar } from "../Avatar";
 
 export function Sidebar() {

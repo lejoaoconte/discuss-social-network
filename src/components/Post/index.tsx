@@ -1,3 +1,5 @@
+import { ChangeEvent, FormEvent, useState } from "react";
+
 import styles from "./Post.module.css";
 
 import { format } from "date-fns";
@@ -6,7 +8,6 @@ import { formatDistanceToNow } from "date-fns/esm";
 
 import { Comment, CommentInterface } from "../Comment";
 import { Avatar } from "../Avatar";
-import { ChangeEvent, FormEvent, useState } from "react";
 
 interface ContentPost {
   type: string;
