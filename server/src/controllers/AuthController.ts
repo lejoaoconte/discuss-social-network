@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import "dotenv/config";
 
 import jwt from "jsonwebtoken";
+
+import "dotenv/config";
+
 import User from "../schemas/User";
 
 export interface AuthControllerInterface extends Document {

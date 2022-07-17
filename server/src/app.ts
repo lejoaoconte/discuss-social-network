@@ -1,6 +1,11 @@
 import express, { Application } from "express";
-import cors from "cors";
+
 import mongoose, { ConnectOptions } from "mongoose";
+
+import cors from "cors";
+
+import "dotenv/config";
+
 import routes from "./routes";
 
 class App {
@@ -21,7 +26,7 @@ class App {
 
   private database(): void {
     mongoose.connect(
-      "mongodb+srv://lejoaoconte:IiPhdAniZ8DyFHYA@database.pfcx7vz.mongodb.net/?retryWrites=true&w=majority",
+      `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_DB}.pfcx7vz.mongodb.net/?retryWrites=true&w=majority`,
       { useNewUrlParser: true, useUnifiedTopology: true } as ConnectOptions
     );
   }
