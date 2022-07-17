@@ -9,8 +9,8 @@ The design and concepts of front-end was taken by Rocketseat Ignite course and a
 Demonstration images below:
 
 <div align="center" style="display:flex; text-align:center;">
-<img style="margin-right:20px; width: 450px" src="https://raw.githubusercontent.com/lejoaoconte/discuss-social-network/main/src/assets/screen1.png" alt="Demonstration Chat APP">
-<img style="margin-right:20px; width: 150px" src="https://raw.githubusercontent.com/lejoaoconte/discuss-social-network/main/src/assets/screen2.png" alt="Demonstration Chat APP">
+<img style="margin-right:80px; width: 550px" src="https://raw.githubusercontent.com/lejoaoconte/discuss-social-network/main/src/assets/screen1.png" alt="Demonstration Chat APP">
+<img style="width: 135px" src="https://raw.githubusercontent.com/lejoaoconte/discuss-social-network/main/src/assets/screen2.png" alt="Demonstration Chat APP">
 </div>
 
 ## Description
