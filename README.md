@@ -13,7 +13,7 @@ Demonstration images below:
 <img style="width: 135px" src="https://raw.githubusercontent.com/lejoaoconte/discuss-social-network/main/src/assets/screen2.png" alt="Demonstration Chat APP">
 </div>
 
-## Description
+<!-- ## Description -->
 
 <!-- The main idea of this application is created a complete chat which login and auth system, without use of strongest back-end, but which we could understand the concepts as NextAuth, Socket.io, and how work back-end in Next.js and how we could applying this in a application.
 
